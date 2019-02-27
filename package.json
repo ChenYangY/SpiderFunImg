@@ -1,0 +1,28 @@
+{
+  "name": "spiderfunimg",
+  "version": "1.0.0",
+  "description": "spider funny imgs from tu.duowan.com",
+  "main": "app.js",
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [
+    "spider"
+  ],
+  "author": "chenyy",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "cheerio": "^1.0.0-rc.2",
+    "gm": "^1.23.1",
+    "log4js": "^3.0.6",
+    "phantom": "^6.0.3",
+    "phantomjs-prebuilt": "^2.1.16",
+    "redis": "^2.8.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "should": "^13.2.3"
+  }
+}
