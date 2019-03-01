@@ -24,7 +24,7 @@ class Image extends EventEmitter  {
         this.name = obj.name ;
         this.comment = obj.comment || "";
         this.dst = path.join(__dirname,"../../",obj.dst);
-        this.fontSize = obj.fontSize || 32;
+        this.fontSize = obj.fontSize || 18;
         this.srcImgPath = path.join(this.src,this.name + this.format);
         this.commentImgPath = path.join(this.dst,obj.name + "_comment"+this.format);
         this.targetImgPath = path.join(this.dst,obj.name + "_target"+this.format);
@@ -65,13 +65,26 @@ class Image extends EventEmitter  {
     genCommentImage() {
         var self = this;
         return new Promise(function(resolve,reject){
-            var cImg = gm(self.width, 100, "#fff");
-            var pos_x = self.width/2 - self.comment.length*(self.fontSize/2);
-            pos_x = pos_x>0?pos_x:0;
-            cImg.font("/Library/Fonts/Songti.ttc", 10)
-            .fill("#000")
-            .drawText(pos_x, 70, self.comment)
-            .quality(0)
+            var height = ((self.comment.length * 45)/self.width)>1?200:100;
+            var partcomments = [];
+            var cImg = gm(self.width, height, "#fff");
+            // var lastSpace = self.width - (self.comment.length*self.fontSize);
+            // var pos_x = lastSpace>0?parseInt(lastSpace/2):0;
+            
+            var state = cImg.font("/Library/Fonts/Songti.ttc", 8)
+            .fill("#000");
+
+            if(height>100) {
+                var gap = parseInt(self.width/45);
+                partcomments[0] = self.comment.substring(0,gap);
+                partcomments[1] = self.comment.substring(gap);
+                state = state.drawText(5, 70, partcomments[0])
+                .drawText(5,170,partcomments[1]);
+
+            }else{
+                state = state.drawText(5, 70, self.comment);
+            }
+            state.quality(0)
             .density(400,400)
             .write(self.commentImgPath,function(err){
                 if(err) {
