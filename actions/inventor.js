@@ -23,7 +23,6 @@ class Invertor extends ActionModel {
 
     async thread() {
         var  item = await urlQueue.pop();
-
         if(item === null || item.constructor === Error || !item) {
             return;
         }
