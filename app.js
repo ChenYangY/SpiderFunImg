@@ -92,11 +92,11 @@ var merger = new mactions.Merger(5000);
 
 
 var item = new SpiderQueueItem({
-    galleryId : "138497",
+    galleryId : "138626",
     name : "",
-    url : "http://tu.duowan.com/gallery/138497.html",
+    url : "http://tu.duowan.com/gallery/138626.html",
     type : "今日囧图",
-    number :  2613
+    number : 2635
 });
 
 spiderQueue.push(item);
