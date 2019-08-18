@@ -96,7 +96,7 @@ var item = new SpiderQueueItem({
     name : "",
     url : "http://tu.duowan.com/gallery/138626.html",
     type : "今日囧图",
-    number : 2635
+    number : 2761
 });
 
 spiderQueue.push(item);
